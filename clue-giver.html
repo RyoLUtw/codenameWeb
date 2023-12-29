@@ -48,7 +48,7 @@
   <button style="margin:20px" onclick="loadNewRandomMap()">載入新地圖</button>
 
   <input type="file" id="wordUpload" />
-  <button onclick="randomizeWords()">Randomize Words</button>
+  <button onclick="randomizeWords()">刷新單字</button>
   <div id="grid"></div>
   <p>Time Left: <span id="timer">60</span> seconds</p>
   <button onclick="resetTimer()">Reset Timer</button>
@@ -65,6 +65,7 @@
     let timerInterval;
     let isTimerPaused = false;
     let maps;
+    let usedWordsIndex = 0;
 
     wordUpload.addEventListener('change', function (event) {
       const file = event.target.files[0];
@@ -96,13 +97,17 @@
       }
     }
 
-    function randomizeWords() {
-      shuffleArray(words);
-      const cells = grid.getElementsByClassName('grid-cell');
-      for (let i = 0; i < cells.length; i++) {
-        cells[i].textContent = words[i % words.length]; // Repeat words if necessary
-      }
+
+
+function randomizeWords() {
+  const cells = grid.getElementsByClassName('grid-cell');
+  for (let i = 0; i < cells.length; i++) {
+    if (usedWordsIndex >= words.length) {
+      usedWordsIndex = 0; // Reset to the first word if we've used all words
     }
+    cells[i].textContent = words[usedWordsIndex++];
+  }
+}
 
     function updateTimer() {
       if (timeLeft > 0) {

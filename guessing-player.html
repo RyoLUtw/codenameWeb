@@ -88,12 +88,14 @@
     }
 
     function randomizeWords() {
-      shuffleArray(words);
-      const cells = grid.getElementsByClassName('grid-cell');
-      for (let i = 0; i < cells.length; i++) {
-        cells[i].textContent = words[i % words.length]; // Repeat words if necessary
-      }
+  const cells = grid.getElementsByClassName('grid-cell');
+  for (let i = 0; i < cells.length; i++) {
+    if (usedWordsIndex >= words.length) {
+      usedWordsIndex = 0; // Reset to the first word if we've used all words
     }
+    cells[i].textContent = words[usedWordsIndex++];
+  }
+}
 
     function updateTimer() {
       if (timeLeft > 0) {
