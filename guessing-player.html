@@ -50,7 +50,7 @@
 
 
   <input type="file" id="wordUpload" />
-  <button onclick="randomizeWords()">Randomize Words</button>
+  <button onclick="randomizeWords()">刷新單字</button>
   <div id="grid"></div>
   <p>Time Left: <span id="timer">60</span> seconds</p>
   <button onclick="resetTimer()">Reset Timer</button>
@@ -66,7 +66,8 @@
     let score = 0;
     let timerInterval;
     let isTimerPaused = false;
-    let maps
+    let maps;
+    let usedWordsIndex = 0;
 
 
     wordUpload.addEventListener('change', function (event) {
