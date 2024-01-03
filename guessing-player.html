@@ -2,13 +2,14 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width">
   <title>Codenames Web Guessing Players</title>
   <style>
     #grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-gap: 10px;
-      max-width: 500px;
+      width: 100%;
       margin: 20px auto;
     }
 
@@ -39,24 +40,28 @@
       background-color: #a58a5e;
       color: white;
     }
+
+    .button {
+      font-size: large;
+    }
   </style>
 </head>
 
 <body>
   <div style="margin: 20px">
-    <input type="text" id="mapIdInput" placeholder="Enter Map ID" />
-    <button onclick="loadEnteredMap()">Load Map</button>
+    <input class="button" type="text" id="mapIdInput" placeholder="請輸入地圖編號" />
+    <button class="button" onclick="loadEnteredMap()">Load Map</button>
   </div>
 
 
-  <input type="file" id="wordUpload" />
-  <button onclick="randomizeWords()">刷新單字</button>
+  <input class="button"  type="file" id="wordUpload" />
+  <button class="button" onclick="randomizeWords()">刷新單字</button>
   <div id="grid"></div>
-  <p>Time Left: <span id="timer">60</span> seconds</p>
-  <button onclick="resetTimer()">Reset Timer</button>
-  <button onclick="toggleTimer()">Pause/Resume Timer</button>
+  <p style="font-size: x-large;">剩餘時間: <span id="timer">60</span> 秒</p>
+  <button class="button" onclick="resetTimer()">Reset Timer</button>
+  <button class="button" onclick="toggleTimer()">Pause/Resume Timer</button>
 
-  <p>Score: <span id="score">0</span></p>
+  <p style="display: none;">Score: <span id="score">0</span></p>
 
   <script>
     const grid = document.getElementById('grid');

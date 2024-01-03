@@ -2,6 +2,7 @@
 <html>
 
 <head>
+  <meta name="viewport" content="width=device-width">
   <title>Codenames Web Clue Givers</title>
   <style>
     #grid {
@@ -39,11 +40,14 @@
       background-color: #a58a5e;
       color: white;
     }
+    button {
+      font-size: large;
+    }
   </style>
 </head>
 
 <body>
-  <div id="mapIdDisplay"></div>
+  <div id="mapIdDisplay" style="font-size: x-large;"></div>
   <br>
   <button style="margin:20px" onclick="loadNewRandomMap()">載入新地圖</button>
 
@@ -82,9 +86,9 @@
       const mapIds = Object.keys(maps);
       const randomMapId = mapIds[Math.floor(Math.random() * mapIds.length)];
       const selectedMap = maps[randomMapId];
-      const startingTeam = parseInt(randomMapId) % 2 === 0 ? 'Blue' : 'Red';
+      const startingTeam = parseInt(randomMapId) % 2 === 0 ? '藍' : '紅';
 
-      document.getElementById('mapIdDisplay').textContent = 'Map ID: ' + randomMapId + ' - ' + startingTeam + ' team starts';
+      document.getElementById('mapIdDisplay').textContent = '地圖編號: ' + randomMapId + ' - ' + startingTeam + '隊先開始';
 
       applyMapToGrid(selectedMap);
     }
@@ -202,9 +206,9 @@ function randomizeWords() {
       const mapIds = Object.keys(maps);
       const randomMapId = mapIds[Math.floor(Math.random() * mapIds.length)];
       const selectedMap = maps[randomMapId];
-      const startingTeam = parseInt(randomMapId) % 2 === 0 ? 'Blue' : 'Red';
+      const startingTeam = parseInt(randomMapId) % 2 === 0 ? '藍' : '紅';
 
-      document.getElementById('mapIdDisplay').textContent = 'Map ID: ' + randomMapId + ' - ' + startingTeam + ' team starts';
+      document.getElementById('mapIdDisplay').textContent = '地圖編號: ' + randomMapId + ' - ' + startingTeam + '隊先開始';
 
       applyMapToGrid(selectedMap);
     }
